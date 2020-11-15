@@ -16,6 +16,16 @@ class Product: Codable {
     var stockAmount: Int
     var max_per_order: Int
     
+    init(_id: Int, _name: String, _price: Int, _image_url: String, _stockAmount: Int, _max_per_order: Int) {
+        id = _id
+        name = _name
+        price = _price
+        image_url = _image_url
+        stockAmount = _stockAmount
+        max_per_order = _max_per_order
+        
+    }
+    
 }
 extension Product: Equatable {
     static func == (lhs: Product, rhs: Product) -> Bool {

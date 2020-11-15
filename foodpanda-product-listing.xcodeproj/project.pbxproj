@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4746A3A42561B6A3009DD98A /* ProductError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4746A3A32561B6A3009DD98A /* ProductError.swift */; };
+		4746A3A92561BF47009DD98A /* ProductValidationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4746A3A82561BF47009DD98A /* ProductValidationTest.swift */; };
 		47AE6410256110FF0087E8EB /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AE640E256110FF0087E8EB /* ProductCollectionViewCell.swift */; };
 		47AE6411256110FF0087E8EB /* ProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47AE640F256110FF0087E8EB /* ProductCollectionViewCell.xib */; };
 		47AE641B256116A40087E8EB /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AE641A256116A40087E8EB /* Product.swift */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		4746A3A32561B6A3009DD98A /* ProductError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductError.swift; sourceTree = "<group>"; };
+		4746A3A82561BF47009DD98A /* ProductValidationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductValidationTest.swift; sourceTree = "<group>"; };
 		47AE640E256110FF0087E8EB /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		47AE640F256110FF0087E8EB /* ProductCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCollectionViewCell.xib; sourceTree = "<group>"; };
 		47AE641A256116A40087E8EB /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				99C116A72547C6EC00E14369 /* foodpanda_product_listingTests.swift */,
+				4746A3A82561BF47009DD98A /* ProductValidationTest.swift */,
 				99C116A92547C6EC00E14369 /* Info.plist */,
 			);
 			path = "foodpanda-product-listingTests";
@@ -357,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4746A3A92561BF47009DD98A /* ProductValidationTest.swift in Sources */,
 				99C116A82547C6EC00E14369 /* foodpanda_product_listingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
