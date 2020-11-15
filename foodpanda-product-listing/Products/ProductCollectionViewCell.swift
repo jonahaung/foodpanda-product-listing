@@ -45,11 +45,13 @@ class ProductCollectionViewCell: UICollectionViewCell {
         delegate?.productCollectionViewCell(self, didTapMinusFor: indexPath)
     }
     
-    func configure(_ product: Product, at indexPath: IndexPath, existing: [Product]) {
+    func configure(_ product: Product, at indexPath: IndexPath) {
         self.indexPath = indexPath
         priceLabel.text = "S$\(product.price)"
         nameLabel.text = product.name.description
-        itemsCountLabel.text = existing.count.description
+        let existing = delegate?.selectedItems.filter{ $0 == product }
+            
+        itemsCountLabel.text = existing?.count.description
         guard let url = URL(string: product.image_url) else { return }
         cancellable = loadImage(for: url).sink { [unowned self] image in
             imageView.image = image

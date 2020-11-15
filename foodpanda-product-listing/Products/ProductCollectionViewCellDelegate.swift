@@ -10,4 +10,5 @@ import Foundation
 protocol ProductCollectionViewCellDelegate: class {
     func productCollectionViewCell(_ cell: ProductCollectionViewCell, didTapAdd indexPath: IndexPath)
     func productCollectionViewCell(_ cell: ProductCollectionViewCell, didTapMinusFor indexPath: IndexPath)
+    var selectedItems: [Product] { get }
 }

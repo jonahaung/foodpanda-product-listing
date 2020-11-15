@@ -16,7 +16,7 @@ class ProductsViewController: UIViewController {
     @IBOutlet weak var totalPriceLabel: UILabel!
     
     private var products = [Product]()
-    private var selectedItems = [Product]() {
+    internal var selectedItems = [Product]() {
         didSet {
             updateCard()
         }
@@ -27,7 +27,6 @@ class ProductsViewController: UIViewController {
         setupCollectionView()
         fetchData()
     }
-
 }
 
 // Set up
@@ -37,7 +36,7 @@ extension ProductsViewController {
         collectionView.backgroundColor = .systemGroupedBackground
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.setCollectionViewLayout(createGridLayout(), animated: true)
+        collectionView.setCollectionViewLayout(createGridLayout(), animated: false)
         collectionView.register(UINib(nibName: "ProductCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ProductCollectionViewCell")
         footerCardView.layer.cornerRadius = 8
     }
@@ -63,11 +62,10 @@ extension ProductsViewController {
         if let url = Bundle.main.url(forResource: "products", withExtension: "json") {
             do {
                 let data = try Data(contentsOf: url)
-                
                 let decoder = JSONDecoder()
                 products = (try decoder.decode([Product].self, from: data)).filter{$0.stockAmount != 0}
             } catch {
-                print("error:\(error)")
+                showAlert(title: "Error", message: error.localizedDescription)
             }
         }
     }
@@ -83,54 +81,49 @@ extension ProductsViewController: UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCollectionViewCell", for: indexPath) as! ProductCollectionViewCell
         let product = products[indexPath.item]
-        cell.configure(product, at: indexPath, existing: selectedItems.filter{ $0 == product })
         cell.delegate = self
+        cell.configure(product, at: indexPath)
         return cell
     }
 }
 
-
+// ProductCell Delegate
 extension ProductsViewController: ProductCollectionViewCellDelegate, AlertPresenting {
     
-    // Plus
+    // Add to Cart
     func productCollectionViewCell(_ cell: ProductCollectionViewCell, didTapAdd indexPath: IndexPath) {
         
         let product = products[indexPath.item]
         let existings = selectedItems.filter{ $0 == product }
-        let count = existings.count + 1
+        let existingCount = existings.count + 1
         
-        guard product.isValidMaxOrder(for: count) else {
-            showAlert(title: "Max order reached", message: "User should not be able to add more than max_per_order")
-            return
+        do {
+            try product.addToCart(for: existingCount)
+            
+            UIDevice.playTock()
+            selectedItems.append(product)
+            if let cell = collectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell {
+                cell.itemsCountLabel.text = existingCount.description
+                Vibration.light.vibrate()
+            }
+        }catch {
+            showAlert(title: "Error", message: error.localizedDescription)
         }
-        guard product.isValidStock() else {
-            showAlert(title: "Out of stock", message: "User should not be able to add more than stock_amount")
-            return
-        }
-        if product.stockAmount != -1 {
-            product.stockAmount -= 1
-        }
-        UIDevice.playTock()
-        selectedItems.append(product)
-        if let cell = collectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell {
-            cell.itemsCountLabel.text = count.description
-        }
-    
     }
     
-    // Minus
+    // Remove from Cart
     func productCollectionViewCell(_ cell: ProductCollectionViewCell, didTapMinusFor indexPath: IndexPath) {
         let product = products[indexPath.item]
-        if let i = selectedItems.firstIndex(of: product) {
-            selectedItems.remove(at: i)
-            if product.stockAmount != -1 {
-                product.stockAmount += 1
-            }
+        do {
+            selectedItems = try product.removeFromCart(with: selectedItems)
             UIDevice.playTock()
             let existings = selectedItems.filter{ $0 == product }
             if let cell = collectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell {
                 cell.itemsCountLabel.text = existings.count.description
+                Vibration.light.vibrate()
             }
+        } catch {
+            showAlert(title: "Error", message: error.localizedDescription)
         }
     }
     

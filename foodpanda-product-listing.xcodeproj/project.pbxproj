@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4746A3A42561B6A3009DD98A /* ProductError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4746A3A32561B6A3009DD98A /* ProductError.swift */; };
 		47AE6410256110FF0087E8EB /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AE640E256110FF0087E8EB /* ProductCollectionViewCell.swift */; };
 		47AE6411256110FF0087E8EB /* ProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47AE640F256110FF0087E8EB /* ProductCollectionViewCell.xib */; };
 		47AE641B256116A40087E8EB /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AE641A256116A40087E8EB /* Product.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4746A3A32561B6A3009DD98A /* ProductError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductError.swift; sourceTree = "<group>"; };
 		47AE640E256110FF0087E8EB /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		47AE640F256110FF0087E8EB /* ProductCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCollectionViewCell.xib; sourceTree = "<group>"; };
 		47AE641A256116A40087E8EB /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				47AE641A256116A40087E8EB /* Product.swift */,
+				4746A3A32561B6A3009DD98A /* ProductError.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				47AE642E25611CDC0087E8EB /* Vibration.swift in Sources */,
 				47AE643B256121F80087E8EB /* Extensions.swift in Sources */,
 				99C116952547C6EA00E14369 /* ProductsViewController.swift in Sources */,
+				4746A3A42561B6A3009DD98A /* ProductError.swift in Sources */,
 				47AE6428256118B50087E8EB /* ProductCollectionViewCellDelegate.swift in Sources */,
 				47EC907A2561499A00FD892D /* ImageLoader.swift in Sources */,
 				99C116912547C6EA00E14369 /* AppDelegate.swift in Sources */,
