@@ -11,11 +11,14 @@ import UIKit
 class ProductsViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var footerCardView: UIView!
+    @IBOutlet weak var totalItemsLabel: UILabel!
+    @IBOutlet weak var totalPriceLabel: UILabel!
     
     private var products = [Product]()
     private var selectedItems = [Product]() {
         didSet {
-            
+            updateCard()
         }
     }
     
@@ -36,21 +39,22 @@ extension ProductsViewController {
         collectionView.delegate = self
         collectionView.setCollectionViewLayout(createGridLayout(), animated: true)
         collectionView.register(UINib(nibName: "ProductCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ProductCollectionViewCell")
+        footerCardView.layer.cornerRadius = 8
     }
     
     private func createGridLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(0.65))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(0.7))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
         let spacing = CGFloat(5)
         group.interItemSpacing = .fixed(spacing)
         
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = spacing
-        section.contentInsets = NSDirectionalEdgeInsets(top: 15, leading: 5, bottom: 100, trailing: 5)
-        section.interGroupSpacing = 5
+        section.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 100, trailing: 5)
+//        section.interGroupSpacing = 5
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
@@ -106,6 +110,7 @@ extension ProductsViewController: ProductCollectionViewCellDelegate, AlertPresen
         if product.stockAmount != -1 {
             product.stockAmount -= 1
         }
+        UIDevice.playTock()
         selectedItems.append(product)
         if let cell = collectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell {
             cell.itemsCountLabel.text = count.description
@@ -121,10 +126,19 @@ extension ProductsViewController: ProductCollectionViewCellDelegate, AlertPresen
             if product.stockAmount != -1 {
                 product.stockAmount += 1
             }
+            UIDevice.playTock()
             let existings = selectedItems.filter{ $0 == product }
             if let cell = collectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell {
                 cell.itemsCountLabel.text = existings.count.description
             }
         }
+    }
+    
+    private func updateCard() {
+        footerCardView.isHidden = selectedItems.isEmpty
+        let totalPrice = selectedItems.map{ $0.price }.reduce(0){$0 + $1 }
+        let totalItem = selectedItems.count
+        totalItemsLabel.text = "\(totalItem) items"
+        totalPriceLabel.text = "$\(totalPrice)"
     }
 }

@@ -24,46 +24,39 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u8v-Dk-DMq">
                         <rect key="frame" x="5" y="181" width="266" height="122"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="So9-Yb-mTR">
-                                <rect key="frame" x="5" y="5" width="256" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="So9-Yb-mTR">
+                                <rect key="frame" x="5" y="2" width="256" height="18"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uB-hz-4hW">
-                                <rect key="frame" x="5" y="28" width="256" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uB-hz-4hW">
+                                <rect key="frame" x="5" y="22" width="256" height="20.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inx-zy-QlY">
-                                <rect key="frame" x="108" y="58.5" width="50" height="19.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="c23-CV-grf"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inx-zy-QlY">
+                                <rect key="frame" x="109" y="57.5" width="48" height="49.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pX1-nA-gde">
-                                <rect key="frame" x="64.5" y="57.5" width="28.5" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pX1-nA-gde">
+                                <rect key="frame" x="10" y="70" width="94" height="25"/>
                                 <color key="tintColor" systemColor="systemPinkColor"/>
-                                <state key="normal" image="minus.rectangle.fill" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                    </preferredSymbolConfiguration>
+                                <state key="normal" image="minus.circle.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22"/>
                                 </state>
                                 <connections>
                                     <action selector="didTapMinusButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="qFg-4M-6dn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LCw-0z-zpC">
-                                <rect key="frame" x="173" y="57.5" width="28.5" height="22"/>
+                                <rect key="frame" x="162" y="70" width="94" height="25"/>
                                 <color key="tintColor" systemColor="systemGreenColor"/>
-                                <state key="normal" image="plus.rectangle.fill" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                    </preferredSymbolConfiguration>
+                                <state key="normal" image="plus.circle.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22"/>
                                 </state>
                                 <connections>
                                     <action selector="didTapPlusButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="675-g2-gcl"/>
@@ -73,17 +66,20 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="So9-Yb-mTR" firstAttribute="leading" secondItem="u8v-Dk-DMq" secondAttribute="leading" constant="5" id="0ja-s7-OvX"/>
-                            <constraint firstItem="4uB-hz-4hW" firstAttribute="top" secondItem="So9-Yb-mTR" secondAttribute="bottom" constant="5" id="41l-6r-mhn"/>
+                            <constraint firstAttribute="bottom" secondItem="inx-zy-QlY" secondAttribute="bottom" priority="996" constant="15" id="0kA-LO-Z70"/>
+                            <constraint firstItem="4uB-hz-4hW" firstAttribute="top" secondItem="So9-Yb-mTR" secondAttribute="bottom" constant="2" id="41l-6r-mhn"/>
                             <constraint firstItem="LCw-0z-zpC" firstAttribute="centerY" secondItem="inx-zy-QlY" secondAttribute="centerY" id="4y5-jj-LeE"/>
-                            <constraint firstItem="inx-zy-QlY" firstAttribute="top" secondItem="4uB-hz-4hW" secondAttribute="bottom" constant="10" id="DKF-Gi-cP7"/>
+                            <constraint firstItem="inx-zy-QlY" firstAttribute="top" secondItem="4uB-hz-4hW" secondAttribute="bottom" constant="15" id="DKF-Gi-cP7"/>
                             <constraint firstItem="inx-zy-QlY" firstAttribute="centerX" secondItem="u8v-Dk-DMq" secondAttribute="centerX" id="NyG-Zp-Wpq"/>
                             <constraint firstAttribute="trailing" secondItem="4uB-hz-4hW" secondAttribute="trailing" constant="5" id="Q5E-Wq-7Kz"/>
-                            <constraint firstItem="LCw-0z-zpC" firstAttribute="leading" secondItem="inx-zy-QlY" secondAttribute="trailing" constant="15" id="S6a-rj-MwJ"/>
+                            <constraint firstItem="LCw-0z-zpC" firstAttribute="leading" secondItem="inx-zy-QlY" secondAttribute="trailing" constant="5" id="S6a-rj-MwJ"/>
+                            <constraint firstItem="pX1-nA-gde" firstAttribute="leading" secondItem="u8v-Dk-DMq" secondAttribute="leading" constant="10" id="SVB-1R-gwq"/>
                             <constraint firstItem="pX1-nA-gde" firstAttribute="centerY" secondItem="inx-zy-QlY" secondAttribute="centerY" id="iEp-SF-NnD"/>
                             <constraint firstAttribute="trailing" secondItem="So9-Yb-mTR" secondAttribute="trailing" constant="5" id="qtz-iV-kC5"/>
                             <constraint firstItem="4uB-hz-4hW" firstAttribute="leading" secondItem="u8v-Dk-DMq" secondAttribute="leading" constant="5" id="tLZ-ua-8KN"/>
-                            <constraint firstItem="So9-Yb-mTR" firstAttribute="top" secondItem="u8v-Dk-DMq" secondAttribute="top" constant="5" id="wVN-mX-VP5"/>
-                            <constraint firstItem="inx-zy-QlY" firstAttribute="leading" secondItem="pX1-nA-gde" secondAttribute="trailing" constant="15" id="yNM-nI-VMj"/>
+                            <constraint firstAttribute="trailing" secondItem="LCw-0z-zpC" secondAttribute="trailing" constant="10" id="vH0-zX-qfo"/>
+                            <constraint firstItem="So9-Yb-mTR" firstAttribute="top" secondItem="u8v-Dk-DMq" secondAttribute="top" constant="2" id="wVN-mX-VP5"/>
+                            <constraint firstItem="inx-zy-QlY" firstAttribute="leading" secondItem="pX1-nA-gde" secondAttribute="trailing" constant="5" id="yNM-nI-VMj"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -113,8 +109,8 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="minus.rectangle.fill" catalog="system" width="128" height="93"/>
-        <image name="plus.rectangle.fill" catalog="system" width="128" height="93"/>
+        <image name="minus.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

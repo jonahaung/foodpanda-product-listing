@@ -28,13 +28,14 @@ class ProductCollectionViewCell: UICollectionViewCell {
     
     @IBAction func didTapPlusButton(_ sender: Any) {
         guard let indexPath = indexPath else { return }
-        //        Vibration.light.vibrate()
+        
+               
         delegate?.productCollectionViewCell(self, didTapAdd: indexPath)
     }
     
     @IBAction func didTapMinusButton(_ sender: Any) {
         guard let indexPath = indexPath else { return }
-        //        Vibration.light.vibrate()
+        
         delegate?.productCollectionViewCell(self, didTapMinusFor: indexPath)
     }
     
