@@ -44,7 +44,7 @@ extension ProductsViewController {
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(0.65))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
-        let spacing = CGFloat(1)
+        let spacing = CGFloat(5)
         group.interItemSpacing = .fixed(spacing)
         
         let section = NSCollectionLayoutSection(group: group)
@@ -86,20 +86,21 @@ extension ProductsViewController: UICollectionViewDataSource, UICollectionViewDe
 }
 
 
-extension ProductsViewController: ProductCollectionViewCellDelegate {
+extension ProductsViewController: ProductCollectionViewCellDelegate, AlertPresenting {
     
+    // Plus
     func productCollectionViewCell(_ cell: ProductCollectionViewCell, didTapAdd indexPath: IndexPath) {
         
         let product = products[indexPath.item]
         let existings = selectedItems.filter{ $0 == product }
-        print(product, existings)
         let count = existings.count + 1
+        
         guard product.isValidMaxOrder(for: count) else {
-//            showAlert(title: "Max order reached", message: "User should not be able to add more than max_per_order")
+            showAlert(title: "Max order reached", message: "User should not be able to add more than max_per_order")
             return
         }
         guard product.isValidStock() else {
-//            showAlert(title: "Out of stock", message: "User should not be able to add more than stock_amount")
+            showAlert(title: "Out of stock", message: "User should not be able to add more than stock_amount")
             return
         }
         if product.stockAmount != -1 {
@@ -112,6 +113,7 @@ extension ProductsViewController: ProductCollectionViewCellDelegate {
     
     }
     
+    // Minus
     func productCollectionViewCell(_ cell: ProductCollectionViewCell, didTapMinusFor indexPath: IndexPath) {
         let product = products[indexPath.item]
         if let i = selectedItems.firstIndex(of: product) {

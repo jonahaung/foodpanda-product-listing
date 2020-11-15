@@ -12,6 +12,8 @@
 		47AE641B256116A40087E8EB /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AE641A256116A40087E8EB /* Product.swift */; };
 		47AE6422256116FE0087E8EB /* products.json in Resources */ = {isa = PBXBuildFile; fileRef = 99C116C12547DDDF00E14369 /* products.json */; };
 		47AE6428256118B50087E8EB /* ProductCollectionViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AE6427256118B50087E8EB /* ProductCollectionViewCellDelegate.swift */; };
+		47AE642E25611CDC0087E8EB /* Vibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AE642D25611CDC0087E8EB /* Vibration.swift */; };
+		47AE643625611CF00087E8EB /* AlertPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AE643525611CF00087E8EB /* AlertPresenting.swift */; };
 		99C116912547C6EA00E14369 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C116902547C6EA00E14369 /* AppDelegate.swift */; };
 		99C116932547C6EA00E14369 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C116922547C6EA00E14369 /* SceneDelegate.swift */; };
 		99C116952547C6EA00E14369 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C116942547C6EA00E14369 /* ProductsViewController.swift */; };
@@ -44,6 +46,8 @@
 		47AE640F256110FF0087E8EB /* ProductCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCollectionViewCell.xib; sourceTree = "<group>"; };
 		47AE641A256116A40087E8EB /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		47AE6427256118B50087E8EB /* ProductCollectionViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCellDelegate.swift; sourceTree = "<group>"; };
+		47AE642D25611CDC0087E8EB /* Vibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vibration.swift; sourceTree = "<group>"; };
+		47AE643525611CF00087E8EB /* AlertPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenting.swift; sourceTree = "<group>"; };
 		99C1168D2547C6EA00E14369 /* foodpanda-product-listing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "foodpanda-product-listing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		99C116902547C6EA00E14369 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99C116922547C6EA00E14369 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +120,15 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		47AE642C25611CC00087E8EB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				47AE642D25611CDC0087E8EB /* Vibration.swift */,
+				47AE643525611CF00087E8EB /* AlertPresenting.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		99C116842547C6EA00E14369 = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +158,7 @@
 				99C116902547C6EA00E14369 /* AppDelegate.swift */,
 				99C116922547C6EA00E14369 /* SceneDelegate.swift */,
 				47AE64152561110C0087E8EB /* Products */,
+				47AE642C25611CC00087E8EB /* Helpers */,
 				99C116962547C6EA00E14369 /* Main.storyboard */,
 				99C116992547C6EC00E14369 /* Assets.xcassets */,
 				99C1169B2547C6EC00E14369 /* LaunchScreen.storyboard */,
@@ -304,12 +318,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47AE642E25611CDC0087E8EB /* Vibration.swift in Sources */,
 				99C116952547C6EA00E14369 /* ProductsViewController.swift in Sources */,
 				47AE6428256118B50087E8EB /* ProductCollectionViewCellDelegate.swift in Sources */,
 				99C116912547C6EA00E14369 /* AppDelegate.swift in Sources */,
 				47AE641B256116A40087E8EB /* Product.swift in Sources */,
 				47AE6410256110FF0087E8EB /* ProductCollectionViewCell.swift in Sources */,
 				99C116932547C6EA00E14369 /* SceneDelegate.swift in Sources */,
+				47AE643625611CF00087E8EB /* AlertPresenting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
