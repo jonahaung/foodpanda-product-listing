@@ -22,7 +22,7 @@ class ProductsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-        loadData()
+        fetchData()
     }
 
 }
@@ -31,6 +31,7 @@ class ProductsViewController: UIViewController {
 extension ProductsViewController {
     
     private func setupCollectionView() {
+        collectionView.backgroundColor = .systemGroupedBackground
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.setCollectionViewLayout(createGridLayout(), animated: true)
@@ -54,7 +55,7 @@ extension ProductsViewController {
         return layout
     }
     
-    private func loadData() {
+    private func fetchData() {
         if let url = Bundle.main.url(forResource: "products", withExtension: "json") {
             do {
                 let data = try Data(contentsOf: url)
@@ -68,7 +69,9 @@ extension ProductsViewController {
     }
 }
 
+// Datasource / Delegate
 extension ProductsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return products.count
     }
@@ -76,8 +79,50 @@ extension ProductsViewController: UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCollectionViewCell", for: indexPath) as! ProductCollectionViewCell
         let product = products[indexPath.item]
-//        cell.configure(product, at: indexPath, existing: selectedItems.filter{ $0 == product })
-//        cell.delegate = self
+        cell.configure(product, at: indexPath, existing: selectedItems.filter{ $0 == product })
+        cell.delegate = self
         return cell
+    }
+}
+
+
+extension ProductsViewController: ProductCollectionViewCellDelegate {
+    
+    func productCollectionViewCell(_ cell: ProductCollectionViewCell, didTapAdd indexPath: IndexPath) {
+        
+        let product = products[indexPath.item]
+        let existings = selectedItems.filter{ $0 == product }
+        print(product, existings)
+        let count = existings.count + 1
+        guard product.isValidMaxOrder(for: count) else {
+//            showAlert(title: "Max order reached", message: "User should not be able to add more than max_per_order")
+            return
+        }
+        guard product.isValidStock() else {
+//            showAlert(title: "Out of stock", message: "User should not be able to add more than stock_amount")
+            return
+        }
+        if product.stockAmount != -1 {
+            product.stockAmount -= 1
+        }
+        selectedItems.append(product)
+        if let cell = collectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell {
+            cell.itemsCountLabel.text = count.description
+        }
+    
+    }
+    
+    func productCollectionViewCell(_ cell: ProductCollectionViewCell, didTapMinusFor indexPath: IndexPath) {
+        let product = products[indexPath.item]
+        if let i = selectedItems.firstIndex(of: product) {
+            selectedItems.remove(at: i)
+            if product.stockAmount != -1 {
+                product.stockAmount += 1
+            }
+            let existings = selectedItems.filter{ $0 == product }
+            if let cell = collectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell {
+                cell.itemsCountLabel.text = existings.count.description
+            }
+        }
     }
 }
