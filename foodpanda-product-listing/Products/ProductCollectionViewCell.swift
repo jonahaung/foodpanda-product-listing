@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 
 class ProductCollectionViewCell: UICollectionViewCell {
     
@@ -20,16 +21,21 @@ class ProductCollectionViewCell: UICollectionViewCell {
     private(set) var indexPath: IndexPath?
     
     weak var delegate: ProductCollectionViewCellDelegate?
+    private var cancellable: AnyCancellable?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setup()
     }
     
+    override public func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
+        cancellable?.cancel()
+    }
+    
     @IBAction func didTapPlusButton(_ sender: Any) {
         guard let indexPath = indexPath else { return }
-        
-               
         delegate?.productCollectionViewCell(self, didTapAdd: indexPath)
     }
     
@@ -45,20 +51,16 @@ class ProductCollectionViewCell: UICollectionViewCell {
         nameLabel.text = product.name.description
         itemsCountLabel.text = existing.count.description
         guard let url = URL(string: product.image_url) else { return }
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data, error == nil,
-                let image = UIImage(data: data)
-            else { return }
-            DispatchQueue.main.async() { [weak self] in
-                if self?.indexPath == indexPath {
-                    self?.imageView.image = image
-                }
-            }
-        }.resume()
-        
+        cancellable = loadImage(for: url).sink { [unowned self] image in
+            imageView.image = image
+        }
+    }
+    
+    private func loadImage(for url: URL) -> AnyPublisher<UIImage?, Never> {
+        return Just(url).flatMap({ poster -> AnyPublisher<UIImage?, Never> in
+            return ImageLoader.shared.loadImage(from: url)
+        })
+        .eraseToAnyPublisher()
     }
 }
 

@@ -54,7 +54,7 @@ extension ProductsViewController {
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = spacing
         section.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 100, trailing: 5)
-//        section.interGroupSpacing = 5
+        section.interGroupSpacing = 5
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }

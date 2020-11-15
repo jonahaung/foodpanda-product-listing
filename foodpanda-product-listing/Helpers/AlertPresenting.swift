@@ -14,7 +14,7 @@ protocol AlertPresenting {
 
 extension AlertPresenting {
     func showAlert(title: String?, message: String?) {
-        let x = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let x = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         x.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
         DispatchQueue.main.async {
             SceneDelegate.delegate?.window?.rootViewController?.present(x, animated: true, completion: nil)
